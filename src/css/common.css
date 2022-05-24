@@ -16,3 +16,5 @@ img {
   display: block;
   max-width: 100%;
 }
+
+@import "simplelightbox/dist/simple-lightbox.min.css";
