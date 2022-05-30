@@ -7,7 +7,6 @@ let deltaTime = null;
 let intervalId = null;
 let toStart = false;
 let TIMER_INRERVAL = 1000;
-const atTimeIsOverMessage = `<p>Time is up!</p>`;
 
 const refs = {
   dateInputRef: document.querySelector('#datetime-picker'),
@@ -18,6 +17,10 @@ const refs = {
   secondsRef: document.querySelector('[data-seconds]'),
   startBtnRef: document.querySelector('[data-start]'),
 };
+
+const textMsg = document.createElement('p');
+textMsg.textContent = 'Please choose a date in the future';
+refs.timerRef.append(textMsg);
 
 startBtnSwitch(!toStart);
 
@@ -45,7 +48,7 @@ function onStartBtnClick() {
   startBtnSwitch(!toStart);
   inputSwitch(!toStart);
   renderTimerTime();
-
+  addMessage('Timer started!');
   intervalId = setInterval(resetTimer, TIMER_INRERVAL);
 }
 
@@ -59,8 +62,11 @@ function renderTimerTime() {
 
 function resetTimer() {
   if (deltaTime < TIMER_INRERVAL) {
-    refs.timerRef.insertAdjacentHTML('beforeend', atTimeIsOverMessage);
+    // refs.timerRef.insertAdjacentHTML('beforeend', atTimeIsOverMessage);
     clearInterval(intervalId);
+    startBtnSwitch(toStart);
+    inputSwitch(toStart);
+    addMessage('Timer is over!');
     return;
   }
 
@@ -78,6 +84,10 @@ function startBtnSwitch(value) {
 
 function inputSwitch(value) {
   refs.dateInputRef.disabled = value;
+}
+
+function addMessage(message) {
+  textMsg.textContent = message;
 }
 
 function convertMs(ms) {
