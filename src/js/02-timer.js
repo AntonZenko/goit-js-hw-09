@@ -66,7 +66,7 @@ function resetTimer() {
     clearInterval(intervalId);
     startBtnSwitch(toStart);
     inputSwitch(toStart);
-    addMessage('Timer is over!');
+    addMessage('Time is over!');
     return;
   }
 
