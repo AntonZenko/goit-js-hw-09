@@ -32,12 +32,12 @@ img {
   font: 24px sans-serif;
 }
 
-.start-btn:hover {
+.start-btn:not([disabled]):hover {
   background-color: lightseagreen;
   color: #fafafa;
 }
 
-.stop-btn:hover {
+.stop-btn:not([disabled]):hover {
   background-color: lightcoral;
   color: #fafafa;
 }

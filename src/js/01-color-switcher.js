@@ -4,6 +4,9 @@ const stopBtn = document.querySelector('[data-stop]');
 stopBtn.classList.add('stop-btn');
 const bodyRef = document.querySelector('body');
 
+const hover = document.querySelector('.start-btn:hover');
+console.log(hover);
+
 let intervalId = null;
 
 startBtn.addEventListener('click', onStartBtn);
